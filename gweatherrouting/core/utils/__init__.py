@@ -24,8 +24,22 @@ from typing import Dict, Callable
 
 from gweatherrouting.core.storage import *  # noqa: F401, F403
 
-this_dir, this_fn = os.path.split(__file__)
-COUNTRIES = json.load(open(this_dir + "/../../data/countries.geojson", "r"))
+try:
+    # Python 3.9+
+    from importlib.resources import files
+    countries_path = files('gweatherrouting.data').joinpath('countries.geojson')
+    COUNTRIES = json.load(open(countries_path, "r"))
+except ImportError:
+    try:
+        # Older Python versions
+        import pkg_resources
+        countries_path = pkg_resources.resource_filename('gweatherrouting', 'data/countries.geojson')
+        COUNTRIES = json.load(open(countries_path, "r"))
+    except ImportError:
+        # Fallback to relative path
+        this_dir, this_fn = os.path.split(__file__)
+        countries_path = os.path.join(this_dir, '../../data/countries.geojson')
+        COUNTRIES = json.load(open(countries_path, "r"))
 COUNTRY_SHAPES = []
 
 
