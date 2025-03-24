@@ -1,0 +1,6 @@
+#!/bin/bash
+HERE="$(dirname "$(readlink -f "${0}")")"
+export XDG_DATA_DIRS="$HERE/usr/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+# Run the application
+exec "$HERE/usr/bin/gWeatherRouting" "$@"
+
