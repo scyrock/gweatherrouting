@@ -4,12 +4,8 @@ This document provides a step-by-step guide to generating an AppImage from the `
 `AppImageGen.sh` automatically executes a procedure similar to the one outlined below.
 ## Prerequisites
 
-Before starting, ensure you have the following dependencies installed:
-
 - Python and `pip`
-- `pyinstaller` (for binary generation)
 - `appimagetool` (for AppImage creation)
-- `linuxdeploy` and `linuxdeploy-plugin-gtk` (for packaging)
 
 ## 1. Clone the Repository
 
