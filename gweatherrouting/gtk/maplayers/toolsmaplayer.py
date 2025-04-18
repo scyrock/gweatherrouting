@@ -202,6 +202,7 @@ class ToolsMapLayer(GObject.GObject, OsmGpsMap.MapLayer):
                 self.mousePosition[0],
                 self.mousePosition[1],
             )
+            d = d*0.539957 # convert to nautical miles
 
             # Draw info
             Style.Measure.Font.apply(cr)
